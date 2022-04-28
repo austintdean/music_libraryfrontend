@@ -1,25 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import DisplayMusic from './Components/DisplayMusic/DisplayMusic';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [song, setSong] = useState([{title:'Tek It', artist:'Cafune',album:'Running',release_date:'11-04-2019',genre:'Alternative',likes:0}])
+
+    return (
+    <div>
+        <DisplayMusic songEntries ={song}/>
+   </div>
+   )   
 }
 
 export default App;
