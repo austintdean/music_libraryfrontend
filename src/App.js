@@ -1,13 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DisplayMusic from './Components/DisplayMusic/DisplayMusic';
+import MusicPost from './Components/MusicPost/MusicPost'
+
+import axios from 'axios'
+
 
 function App() {
 
-    const [song, setSong] = useState([{title:'Tek It', artist:'Cafune',album:'Running',release_date:'11-04-2019',genre:'Alternative',likes:0}])
+    const [song, setSong] = useState([])
+
+    useEffect(() =>{
+        getAllSongs();
+    
+    },[]);
+
+
+    async function getAllSongs(){
+        let response = await axios.get("http://127.0.0.1:8000/api/songs/")
+        setSong(response.data)
+    }
+
+
+
+
+
+    async function postNewMusic(newSong){
+
+        let response = await axios.post("http://127.0.0.1:8000/api/songs/",newSong);
+        if (response.status === 201){
+            getAllSongs()
+        }
+    }
+
 
     return (
     <div>
-        <DisplayMusic songEntries ={song}/>
+        <MusicPost postNewMusic ={postNewMusic}/>
+        <DisplayMusic song ={song}/>
    </div>
    )   
 }

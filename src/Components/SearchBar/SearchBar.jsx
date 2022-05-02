@@ -1,7 +1,12 @@
 
 
 const SearchBar = (props) => {
-    return (  );
+    return (  
+   
+
+
+        useEffect
+    );
 }
  
 export default SearchBar;
