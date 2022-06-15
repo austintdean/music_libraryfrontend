@@ -3,6 +3,7 @@ import DisplayMusic from './Components/DisplayMusic/DisplayMusic';
 import MusicPost from './Components/MusicPost/MusicPost'
 
 import axios from 'axios'
+import SearchBar from './Components/NavBar/NavBar';
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
 
     async function postNewMusic(newSong){
 
-        let response = await axios.post("http://127.0.0.1:8000/api/songs/",newSong);
+        let response = await axios.post("http://127.0.0.1:8000/api/songs/", newSong);
         if (response.status === 201){
             getAllSongs()
         }
@@ -35,10 +36,11 @@ function App() {
 
     return (
     <div>
+        <SearchBar/>
         <MusicPost postNewMusic ={postNewMusic}/>
         <DisplayMusic song ={song}/>
    </div>
-   )   
+   )    
 }
 
 export default App;
