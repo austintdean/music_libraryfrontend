@@ -1,4 +1,25 @@
-table{
+table {
+    width: 100%;
     border: 3px;
     border-color: black;
+    border: 1px solid;
+}
+
+th, td{
+    border: 1px solid;
+}
+
+.table-center{
+    display:block;
+    justify-content: center;
+
+}
+
+.content{
+  
+        border-collapse:separate;
+        margin: 0;
+        font-size: 0.9em;
+        text-align: center;
+        min-width: 25 em;
 }

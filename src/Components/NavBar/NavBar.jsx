@@ -1,16 +1,16 @@
-
 import "./NavBar.css"
 
-const SearchBar = (props) => {
+const NavBar = (props) => {
     return (  
         <div className="container">
             <h3>Music Library</h3>
-
+       
         </div>
+        
 
 
         
     );
 }
  
-export default SearchBar;
+export default NavBar;

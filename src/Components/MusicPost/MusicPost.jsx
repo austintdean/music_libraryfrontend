@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./MusicPost.css"
+import axios from "axios"
 
 const MusicPost = (props) => {
     
@@ -9,21 +10,31 @@ const MusicPost = (props) => {
     const [album, setAlbum] = useState([]);
     const [release_date, setReleaseDate] = useState([]);
     const [genre, setGenre] = useState([]);
-    const [likes, setLikes] = useState([]);
 
 
         function handleSubmit(event){
             event.preventDefault()
             let newEntry = {
-                artist: artist,
                 title: title,
+                artist: artist,
                 album: album,
-                releaseDate: release_date,
+                release_date: release_date,
                 genre: genre,
             }
+            console.log("title",title)
+            console.log("artist",artist)
+            console.log("album",album)
+            console.log("release date",release_date)
+            console.log("genre",genre)
+            console.log("new entry", newEntry)
+            postNewSong(newEntry)
         
-        props.postNewMusic(newEntry)
         }
+
+async function postNewSong(entry){
+    let response = await axios.post("http://127.0.0.1:8000/api/songs/", entry)
+    console.log(response.data)
+}
     
     
     

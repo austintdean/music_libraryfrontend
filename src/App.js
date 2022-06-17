@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import DisplayMusic from './Components/DisplayMusic/DisplayMusic';
 import MusicPost from './Components/MusicPost/MusicPost'
-
+import NavBar from './Components/NavBar/NavBar';
 import axios from 'axios'
-import SearchBar from './Components/NavBar/NavBar';
+import SearchBar from './Components/SearchBar/SearchBar';
 
 
 function App() {
@@ -23,22 +23,14 @@ function App() {
 
 
 
-
-
-    async function postNewMusic(newSong){
-
-        let response = await axios.post("http://127.0.0.1:8000/api/songs/", newSong);
-        if (response.status === 201){
-            getAllSongs()
-        }
-    }
-
+   
 
     return (
-    <div>
-        <SearchBar/>
-        <MusicPost postNewMusic ={postNewMusic}/>
-        <DisplayMusic song ={song}/>
+    <div className='disco'>
+        <NavBar song={song}/>
+        <SearchBar song={song} setSong={setSong}getAllSongs={getAllSongs}/>
+        <DisplayMusic song ={song} getAllSongs={getAllSongs}/>
+        <MusicPost />
    </div>
    )    
 }
